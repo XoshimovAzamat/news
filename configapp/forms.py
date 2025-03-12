@@ -1,8 +1,8 @@
 import re
-
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
-
+from django.contrib.auth.models import User
 from .models import Categories, News
 
 
@@ -35,3 +35,10 @@ class NewForm(forms.ModelForm):
             if re.match(r'\d', title):
                 raise ValidationError("Title raqam bo`lmasin!")
             return title
+class UserLoginForm(AuthenticationForm):
+    username = forms.CharField(label='login', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(label='password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
+    class Meta:
+        model  = User
+        fields = ('uesrname', 'password')

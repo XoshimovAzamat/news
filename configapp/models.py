@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Categories(models.Model):
@@ -33,3 +34,12 @@ class News(models.Model):
             Q(context__icontains=query)
         )
 
+class Teacher(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    lastname = models.CharField(max_length=25)
+    middleName = models.CharField(max_length=25)
+    year = models.DateField(null=True)
+    code = models.CharField(null=True, max_length=50)
+
+    def __str__(self):
+        return self.user.username
