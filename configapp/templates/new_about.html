@@ -44,6 +44,7 @@
     </div>
     <p class="card-text">{{new.context}}<small class="text-muted"><br>{{new.created_ed}}</small></p>
     <a href="{% url 'update_new' new.pk %}" class="btn btn-primary">Update...</a>
+    <a href="{% url 'del_new' new.pk %}" class="btn btn-primary">Delete...</a>
 </div>
 
 

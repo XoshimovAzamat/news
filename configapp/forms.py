@@ -22,8 +22,8 @@ class NewForm(forms.ModelForm):
 
     class Meta:
         model = News
-        # fields = '__all__'
-        fields = ['title', 'context', 'is_bool', 'category']
+        fields = '__all__'
+        # fields = ['title', 'context', 'is_bool', 'category']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'context': forms.Textarea(attrs={'class': 'form-control', 'row': 5}),
@@ -35,6 +35,8 @@ class NewForm(forms.ModelForm):
             if re.match(r'\d', title):
                 raise ValidationError("Title raqam bo`lmasin!")
             return title
+
+
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(label='login', widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(label='password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
